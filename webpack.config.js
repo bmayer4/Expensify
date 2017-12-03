@@ -1,30 +1,54 @@
 
 const path =  require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = {
-    entry: './src/app.js',
-    output: {
-        path: path.join(__dirname, 'public'),
-        filename: 'bundle.js'
-    },
-    module: {
-        rules: [{
-            loader: 'babel-loader',
-            test: /\.js$/,
-            exclude: /node_modules/
-        }, {
-            test: /\.s?css$/,
-            use: [                               //use lets you specify an array of loaders
-                'style-loader',
-                'css-loader',
-                'sass-loader'
-            ]
-        }]
-    },
-    devtool: 'cheap-module-eval-source-map',    //shows where error occured, where console.logs occur
-    devServer: {
-        contentBase: path.join(__dirname, 'public'),
-        historyApiFallback: true   //tells dev server to serve up index.html for all 404s
+module.exports = (env) => {
+    console.log('***env', env);  //undefined, unless yard run build:prod, then it gets set to "production"
+
+    const isProduction = env === 'production';
+    const CSSExtract = new ExtractTextPlugin('styles.css');
+
+    return {
+        entry: './src/app.js',
+        output: {
+            path: path.join(__dirname, 'public'),
+            filename: 'bundle.js'
+        },
+        module: {
+            rules: [{
+                loader: 'babel-loader',
+                test: /\.js$/,
+                exclude: /node_modules/
+            }, {
+                test: /\.s?css$/,
+                use: CSSExtract.extract({   //use lets you add in multiple loaders
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                sourceMap: true
+                            },
+
+                        },
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap: true
+                            },
+
+                        }
+                    ]
+                })
+            }]
+        },
+        plugins: [
+            CSSExtract   //after adding this, I had to add a link tag in head of index.html
+        ],
+        devtool: isProduction ? 'source-map' : 'inline-source-map',    //shows where error occured, where console.logs occur
+        devServer: {
+            contentBase: path.join(__dirname, 'public'),
+            historyApiFallback: true   //tells dev server to serve up index.html for all 404s
+        }
     }
 };
 

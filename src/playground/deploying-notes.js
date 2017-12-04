@@ -25,7 +25,7 @@
 //heroku
 //install heroku cli, installer. command line heroku --v to see that it is installed
 //heroku login
-//heroku create OptionalCustomAppName   , I did heroku create ExpensifyApp
+//heroku create OptionalCustomAppName   , I did heroku create
 //above adds a git remote to your local repository
 //we then push our code up to the heroku remote  (you can command line 'git remote' to see)
 //***before this, I am making changes to app
@@ -35,3 +35,4 @@
 //we don't want to push up bundle.js, bundle.js.map, styles.css, styles.css.map to heroku, they are generated when we run webpack
 //heroku will look for. "heroku-postbuild": "yarn run build:prod"    now the webpack production build will run on the heroku servers
 //I need to gitignore the 4 files. Now we can push our code to heroku. (first push to github)
+//in terminal, git push heroku master

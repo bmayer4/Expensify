@@ -34,4 +34,4 @@
 //now we have to teach heroku how to run webpack
 //we don't want to push up bundle.js, bundle.js.map, styles.css, styles.css.map to heroku, they are generated when we run webpack
 //heroku will look for. "heroku-postbuild": "yarn run build:prod"    now the webpack production build will run on the heroku servers
-//I need to gitignore the 4 files. Now we can push our code to heroku
+//I need to gitignore the 4 files. Now we can push our code to heroku. (first push to github)

@@ -36,3 +36,15 @@
 //heroku will look for. "heroku-postbuild": "yarn run build:prod"    now the webpack production build will run on the heroku servers
 //I need to gitignore the 4 files. Now we can push our code to heroku. (first push to github)
 //in terminal, git push heroku master
+//heroku logs in terminal can help with any problems
+
+
+
+//THEN
+//we have like 30 dependencies, all going to heroku but ones like enzyme will only be used locally
+//same with live-server and webpack-dev-server
+//we will create dependencies that will get installed locally and on heroku, and dev dependencies that will
+// only get installed locally
+//from terminal, we are using chalk for example purposes. yarn add chalk --dev, this is where we want dependencies we won't use in production
+//so now we are copying and pasting dependencies in to devDependencies, removed chalk, live-server
+//we can delete node_modules and then run yarn install in terminal 

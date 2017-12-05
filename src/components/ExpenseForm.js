@@ -78,7 +78,7 @@ export default class ExpenseForm extends React.Component {
             this.setState(() => ({ error: 'Please provide description and amount' }));
         } else {
             this.setState(() => ({ error: '' }));
-            this.props.onSubmit({   //why does this work? we can't console.log props.expense
+            this.props.onSubmit({   
                 description: this.state.description,
                 note: this.state.note,
                 amount: parseFloat(this.state.amount, 10) * 100,  //base 10, and * 100 since we're working in cents

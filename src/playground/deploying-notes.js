@@ -48,3 +48,8 @@
 //from terminal, we are using chalk for example purposes. yarn add chalk --dev, this is where we want dependencies we won't use in production
 //so now we are copying and pasting dependencies in to devDependencies, removed chalk, live-server
 //we can delete node_modules and then run yarn install in terminal 
+
+//THEN
+//in public folder, we want bundle and styles files to be in dist folder in public, so had to make changes in
+//index.html, webpack.config.js
+//the 4 files in dist are our compiled assets

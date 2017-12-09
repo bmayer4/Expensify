@@ -1,7 +1,7 @@
 
 const path =  require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const webpack = requre('webpack');
+const webpack = require('webpack');
 
 //process.env.NODE_ENV //env variable, set by heroku to 'production', we set it to test for scripts, and its set to undefined (development) by default
 //yarn add --dev cross-env

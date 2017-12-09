@@ -183,11 +183,11 @@ const config = {
 //for challenge, same as above but subscribing to changes
 
 // database.ref('expenses').on('value', (snapshot) => {
-//     //console.log(snapshot.val());  //you get objects back
+//     //console.log(snapshot.val()); 
 //     const expenses = [];
 //     snapshot.forEach((childSnapshot) => {
-//         console.log(childSnapshot.val());  //javascript object
-//         expenses.push({   //push here is javascript
+//         console.log(childSnapshot.val()); 
+//         expenses.push({   
 //             id: childSnapshot.key,
 //             ...childSnapshot.val()
 //         });

@@ -1,4 +1,4 @@
-import { startAddExpense, addExpense, editExpense, removeExpense } from './../../actions/expenses';
+import { startAddExpense, addExpense, editExpense, removeExpense, setExpenses, startSetExpenses } from './../../actions/expenses';
 import expenses from '../fixtures/expenses';
 import configureMockStore from 'redux-mock-store';  //yarn add redux-mock-store
 import thunk from 'redux-thunk';
@@ -6,6 +6,14 @@ import database from '../../firebase/firebase';
 
 
 const createMockStore = configureMockStore([thunk]);
+
+beforeEach((done) => {  //test data into firebase, our fixture data wasn't in correct format to add to set()
+    const expensesData = {};  //done so tests don't run before data is saved to firebase
+    expenses.forEach(({ id, description, note, amount, createdAt }) => {
+        expensesData[id] = { description: description, note: note, amount: amount, createdAt: createdAt }
+    });
+    database.ref('expenses').set(expensesData).then(() => { done(); });
+});
 
 //can't use === to compare 2 objects, so need to use toEqual
 test('should setup remove expense action object', () => {
@@ -29,7 +37,7 @@ test('should setup the add expense action object with provided values', () => {
 // });
 
 
-test('should add expense to database and store', (done) => {  //done to tell jest to wait fro the asyncronous code to finish, point in time when we call done()
+test('should add expense to database and store', (done) => {  //done to tell jest to wait for the asyncronous code to finish, point in time when we call done()
     //we need to mock redux store
     const store = createMockStore({});
 
@@ -84,3 +92,28 @@ test('should add expense with defaults to database and store', (done) => {
             done();
         });;
 });
+
+test('should set up set expense action object with data', () => {
+    const action = setExpenses(expenses);
+    expect(action).toEqual({
+        type: 'SET_EXPENSES',
+        expenses: expenses
+    });
+});
+
+test('should fetch the expenses from firebase', (done) => {
+    const store = createMockStore({});
+
+    store.dispatch(startSetExpenses()).then(() => {
+        const actions = store.getActions();
+
+        expect(actions[0]).toEqual({
+            type: "SET_EXPENSES",
+            expenses: expenses
+        });
+        done();
+});
+
+});
+
+

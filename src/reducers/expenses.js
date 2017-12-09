@@ -23,6 +23,8 @@ const expensesReducer = (state = expensesReducerDefaultState, action) => {
                     return expense //same effect as if we didn't do anything
                 };
             });
+        case 'SET_EXPENSES':
+        return action.expenses;  //we do not care what was in the state before this    
         default:
         return state;
     }

@@ -41,6 +41,31 @@ export const editExpense = (id, updates) => ({  //no defaults needed
 });
 
 
+//SET_EXPENSES
+export const setExpenses = (expenses) => ({
+    type: 'SET_EXPENSES',
+    expenses: expenses
+});
+
+//asynchronous action 
+export const startSetExpenses = () => {
+    return (dispatch) => {
+        const expenses = [];
+        return database.ref('expenses').once('value').then((snapshot) => { //return so the promise is returned so we can use then in app.js
+            snapshot.forEach((childSnapshot) => {
+                expenses.push({   
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                });
+            });
+          dispatch(setExpenses(expenses));
+        });
+    };
+};
+
+
+
+
 //component calls action generator
 //action generator returns object
 //component dispatches object

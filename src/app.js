@@ -9,6 +9,8 @@ import getVisibleExpenses from './selectors/expenses';
 import 'normalize.css/normalize.css';              
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';  //this was in ExpenseForm but we moved it
+import './firebase/firebase';
+
 
 const store = configureStore();
 
@@ -17,6 +19,7 @@ const jsx = (
         <AppRouter />
     </Provider>
 );
+
 
 ReactDOM.render(jsx, document.getElementById('app'));
 

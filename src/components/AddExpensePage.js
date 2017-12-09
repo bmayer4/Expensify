@@ -1,12 +1,12 @@
 import React from 'react';  
 import { connect } from 'react-redux'; 
 import ExpenseForm from './ExpenseForm';
-import { addExpense } from './../actions/expenses';
+import { startAddExpense } from './../actions/expenses';
 
 //named export (unconnected) for test
 export class AddExpensePage extends React.Component {
     onSubmit = (expense) => {
-        this.props.addExpense(expense);
+        this.props.startAddExpense(expense);
         this.props.history.push('/');  //no page refresh, using browser routing
     };
     render () {
@@ -43,7 +43,7 @@ export class AddExpensePage extends React.Component {
 
     //connect takes two arguments, mapStateToProps and mapDispatchToProps
     const mapDispatchToProps = (dispatch) => ({
-            addExpense: (expense) => dispatch(addExpense(expense))
+        startAddExpense: (expense) => dispatch(startAddExpense(expense))
         });
 
 

@@ -1,4 +1,4 @@
-import { startAddExpense, addExpense, editExpense, removeExpense, setExpenses, startSetExpenses } from './../../actions/expenses';
+import { startAddExpense, addExpense, editExpense, removeExpense, setExpenses, startSetExpenses, startRemoveExpense } from './../../actions/expenses';
 import expenses from '../fixtures/expenses';
 import configureMockStore from 'redux-mock-store';  //yarn add redux-mock-store
 import thunk from 'redux-thunk';
@@ -19,6 +19,24 @@ beforeEach((done) => {  //test data into firebase, our fixture data wasn't in co
 test('should setup remove expense action object', () => {
     const action = removeExpense({id: '123abc'});
     expect(action).toEqual({type: 'REMOVE_EXPENSE', id: '123abc'});
+});
+
+test('should remove expenses from firebase', (done) => {
+    const store = createMockStore({});
+
+    store.dispatch(startRemoveExpense({  id: expenses[1].id })).then(() => {
+        const actions = store.getActions();
+
+        expect(actions[0]).toEqual({
+            type: "REMOVE_EXPENSE",
+            id: expenses[1].id
+        });
+
+        return database.ref(`expenses/${expenses[1].id}`).once('value');
+    }).then((snapshot) => {
+        expect(snapshot.val()).toBeFalsy();
+        done();
+    });
 });
 
 test('should setup edit expense action object', () => {
@@ -57,7 +75,7 @@ test('should add expense to database and store', (done) => {  //done to tell jes
             }
         });
 
-        return database.ref(`expenses/${actions[0].expense.id}`).once('value');  //promose chaining
+        return database.ref(`expenses/${actions[0].expense.id}`).once('value');  //promise chaining
     
     }).then((snapshot) => {
         expect(snapshot.val()).toEqual(expenseData);
@@ -112,8 +130,11 @@ test('should fetch the expenses from firebase', (done) => {
             expenses: expenses
         });
         done();
+    });
 });
 
-});
+
+
+
 
 

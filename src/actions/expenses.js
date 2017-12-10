@@ -48,6 +48,13 @@ export const editExpense = (id, updates) => ({  //no defaults needed
     updates: updates
 });
 
+export const startEditExpense = (id, updates) => {  //updates is an object
+    return (dispatch) => {
+        return database.ref(`expenses/${id}`).update(updates).then(() => {  //return important for test then()
+            dispatch(editExpense(id, updates));
+        });
+    };
+};
 
 //SET_EXPENSES
 export const setExpenses = (expenses) => ({

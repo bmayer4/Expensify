@@ -1,12 +1,12 @@
 import React from 'react';  
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
-import { startRemoveExpense, editExpense } from './../actions/expenses'; 
+import { startRemoveExpense, startEditExpense } from './../actions/expenses'; 
 
 
 export class EditExpensePage extends React.Component {
     onSubmit = (expense) => {
-        this.props.editExpense(this.props.expense.id, expense);  
+        this.props.startEditExpense(this.props.expense.id, expense);  
         this.props.history.push('/');
     };
     onRemove = () => {
@@ -23,22 +23,7 @@ export class EditExpensePage extends React.Component {
     }
 }
 
-//didn't user es6 syntax, i was using console.log
-// const EditExpensePage = (props) => {
-//     //console.log(props);
-//     return (
-//     <div>
-//         <ExpenseForm expense={props.expense} onSubmit={(expense) => {
-//             props.dispatch(editExpense(props.expense.id, expense));
-//             props.history.push('/');
-//         }}/>
-//         <button onClick={() => {
-//             props.dispatch(removeExpense({id: props.expense.id}));
-//             props.history.push('/');
-//         }}>Remove</button>
-//     </div>
-//     );
-// }
+
 
 const mapStateToProps = (state, props) => {  //props is needed to use right below
     return {
@@ -47,7 +32,7 @@ const mapStateToProps = (state, props) => {  //props is needed to use right belo
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    editExpense: (id, expense) => dispatch(editExpense(id, expense)),
+    startEditExpense: (id, expense) => dispatch(startEditExpense(id, expense)),
     startRemoveExpense: (data) => dispatch(startRemoveExpense(data))
 });
 

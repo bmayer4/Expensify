@@ -5,7 +5,7 @@ import Header from '../components/Header';
 
 //I believe this is a component, a wrapper around Route         //renaming component to uppercase, passed in as prop from app.js
 export const PrivateRoute = ({ isAuthenticated, component: Component, ...rest }) => (
-    <Route {...rest} component={(props) => (
+    <Route {...rest} component={(props) => (  //props so the component gets match, history and location props.
         isAuthenticated ? (
             <div>
             <Header />

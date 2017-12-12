@@ -13,12 +13,12 @@ export const addExpense = (expense) => ({
 //the function works because we set up the middleware with redux thunk
 //the function gets called internally by redux, with dispatch
 export const startAddExpense = ({ description = '', note = '', amount = 0, createdAt = 0} = {}) => {
-    return (dispatch) => {
-
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
         const expense = { description: description, note: note, amount: amount, createdAt: createdAt};
 
         //return so we can use then in test file
-        return database.ref('expenses').push(expense).then((snapshot) => {
+        return database.ref(`users/${uid}/expenses`).push(expense).then((snapshot) => {
             dispatch(addExpense({
                 id: snapshot.key,
                 ...expense
@@ -34,8 +34,9 @@ export const removeExpense = ({id}) => ({
 });
 
 export const startRemoveExpense = ({ id } = {}) => {
-    return (dispatch) => {
-        return database.ref(`expenses/${id}`).remove().then(() => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/expenses/${id}`).remove().then(() => {
             dispatch(removeExpense({id: id}));
         });
     };
@@ -49,8 +50,9 @@ export const editExpense = (id, updates) => ({  //no defaults needed
 });
 
 export const startEditExpense = (id, updates) => {  //updates is an object
-    return (dispatch) => {
-        return database.ref(`expenses/${id}`).update(updates).then(() => {  //return important for test then()
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/expenses/${id}`).update(updates).then(() => {  //return important for test then()
             dispatch(editExpense(id, updates));
         });
     };
@@ -64,9 +66,10 @@ export const setExpenses = (expenses) => ({
 
 //asynchronous action 
 export const startSetExpenses = () => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
         const expenses = [];
-        return database.ref('expenses').once('value').then((snapshot) => { //return so the promise is returned so we can use then in app.js
+        return database.ref(`users/${uid}/expenses`).once('value').then((snapshot) => { //return so the promise is returned so we can use then in app.js
             snapshot.forEach((childSnapshot) => {
                 expenses.push({   
                     id: childSnapshot.key,

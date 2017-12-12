@@ -16,3 +16,22 @@
 //Now we need to authenticate our routes
 //make private route file and use it in AppRouter.js
 //put header in private route
+//now I need to make login page a public route, using same way I did PrivateRoute component 
+
+//now I have to associate users with expenses
+//structure
+// const db = {
+//     users: {   //users in root
+//         8384734userid39: {
+//             expenses: {
+//                 39expensesid39: {
+
+//                 }
+//             }
+//         }
+//     }
+// };
+
+//now we have to change database rules
+//
+//one of the few things we have access to in rules is auth.uid

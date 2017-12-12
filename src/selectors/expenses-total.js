@@ -1,7 +1,7 @@
 
 const getExpensesTotal = (expenses) => {
 
-    //I can use es6 syntac for implicit return
+    //I can use es6 syntac for implicit return, see below commented out
     return expenses.map((expense) => {
         return expense.amount
     }).reduce((sum, value) => {
@@ -12,6 +12,13 @@ const getExpensesTotal = (expenses) => {
 
 export default getExpensesTotal;
 
+
+// export default (expenses) => {
+//     return expenses
+//         .map((expense) => expense.amount)
+//         .reduce((sum, value) => sum + value, 0);
+//   };
+  
 
 
 

@@ -5,7 +5,7 @@ import selectExpenses from './../selectors/expenses';
 
 
 //Regular unconnected component, the result is we get props we wanted from the store
-//exported below as named export for testing purposes, even to default export is used by app
+//exported below as named export for testing purposes, even though default export is used by app
 export const ExpenseList = (props) => (
     <div>
     {

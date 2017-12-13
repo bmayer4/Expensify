@@ -2,5 +2,6 @@ node_modules/
 public/dist/
 .env.development
 .env.test
-src/playground/login-notes
-src/playground/firebase-notes
+src/playground/login-notes.js
+src/playground/firebase-notes.js
+src/playground.test.js

@@ -32,6 +32,13 @@
 //     }
 // };
 
-//now we have to change database rules
+//now we have to change database rules im firebase
 //
 //one of the few things we have access to in rules is auth.uid
+//in foebase, $user_id is dynamic, will match ever single thing inside of users, we set up read and write rules for those things
+
+
+//data validation in firebase (in addition to our client side validation)
+//$expense_id will always be dynamic
+//$other, a catch all, invalidate data regardeless of what it is
+//in javascript, var b = '', b is a string here

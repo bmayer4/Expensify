@@ -1,4 +1,4 @@
-import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';  //we will use BrowserRouter once to create the new router, and Route for every page
+import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';  
 import React from 'react';
 import AddExpensePage from '../components/AddExpensePage';
 import EditExpensePage from '../components/EditExpensePage'; 

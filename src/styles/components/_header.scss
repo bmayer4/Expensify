@@ -1,0 +1,18 @@
+.header {
+    background: $dark-blue;
+}
+
+.header__title {
+    color: white;
+    text-decoration: none;
+    h1 {
+        margin: 0;  //nested h1 inside .header__title, and this gets rid of white space at top
+    }
+}
+
+.header__content {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: $s-size 0;
+}

@@ -1,10 +1,12 @@
 html {
-    font-size: 62.5%;   //16*.625=10 so now we are working with rems in a base 10 system, just like pixel. Ex: 2.2rem is 22 pixels
+    font-size: 62.5%;   // by default 1em = 16px. 16*.625=10 so now we are working with rems in a base 10 system, just like pixel. Ex: 2.2rem is 22 pixels
 }
 
 body {
-    font-family: 'Helvetica', 'Arial', 'sans-serif';
+    color: $dark-grey;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: $m-size;
+    line-height: 1.6;
 }
 
 button {
@@ -17,4 +19,8 @@ button:disabled {
 
 .is-active {
     font-weight: bold;
+}
+
+* {
+    box-sizing: border-box;  //content-box by default
 }

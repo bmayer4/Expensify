@@ -1,0 +1,19 @@
+.button {
+    background: $blue;
+    border: none;
+    color: white;
+    font-weight: 200;
+    font-size: $font-size-large;
+    padding: $s-size;
+    display: inline-block; //for the link that has button class, links are displayed inline by default
+    text-decoration: none; //for link also
+    line-height: 1;  //for link also, point is we have a link that looks like a button
+}
+
+.button--link {
+    background: none;
+}
+
+.button--secondary {
+    background:#888888;
+}

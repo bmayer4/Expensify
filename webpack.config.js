@@ -7,10 +7,10 @@ const webpack = require('webpack');
 //yarn add --dev cross-env
 //I created .env.test and .env.development at root of project, works with dotenv
 //I also created a new firebase project, made database public (rules to true)
-//yarn add --dev dotenv to get data from these files into env variablse
+//yarn add --dev dotenv to get data from these files into env variables
 //added to this file the new webpack.definePlugin, because node env variables are not passed to client side  javascript for security reasons
 //now I take all the KEY=value pairs in .env.development add add them one by one in termal heroku config:set, see them all with heroku config command
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';  //first one if not falsy
 
 if (process.env.NODE_ENV === 'test') {  //for test, I have to make a change in setupTests.js
     require('dotenv').config({ path: '.env.test' });
@@ -25,7 +25,7 @@ module.exports = (env) => {
     const CSSExtract = new ExtractTextPlugin('styles.css');
 
     return {
-        entry: './src/app.js',
+        entry: ['babel-polyfill', './src/app.js'],   //yarn add babel-polyfill (helps browsers support es6/es7 methods)
         output: {
             path: path.join(__dirname, 'public', 'dist'),
             filename: 'bundle.js'

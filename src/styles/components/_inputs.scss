@@ -1,0 +1,17 @@
+.text-input {
+    border: 1px solid #cacccd;   //matches the border from react dates
+    height: 50px;  //*****important, css will take the border and padding and add it to height. see _base.scss for how to tell css to account for it in height you choose (box-sizing: border-box)
+    font-size: $font-size-large;
+    font-weight: 200;
+    padding: $s-size;
+}
+
+.select {
+    @extend .text-input;
+    
+}
+
+.textarea {
+    @extend .text-input;
+    height: 10rem;
+}

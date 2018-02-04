@@ -111,7 +111,7 @@ const config = {
 
 // //get data with subscribe to any changes
 // //not promise, snapshot is callback because promises can not be fullfilled more than once
-// //returns the inline fuction, which we can pass to off to unsubscribe
+// //returns the inline function, which we can pass to off to unsubscribe
 // const onValueChange = database.ref().on('value', (snapshot) => {
 //     console.log('from on():', snapshot.val());
 // }, (e) => {
@@ -143,7 +143,7 @@ const config = {
 //     }
 // }
 
-// database.ref('notes').push({  //wow, push here is firebase method, this creates an id and puts title and bodu in it
+// database.ref('notes').push({  //wow, push here is firebase method, this creates an id and puts title and body in it
 //     title: 'course topics',
 //     body: 'React, angular, python'
 // });
@@ -198,7 +198,7 @@ const config = {
 
 
 
-//using a different event than valuu
+//using a different event than value
 // database.ref('expenses').on('child_removed', (snapshot) => {
 //     console.log(snapshot.key, snapshot.val());
 // });

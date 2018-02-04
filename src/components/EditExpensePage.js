@@ -56,7 +56,7 @@ export class EditExpensePage extends React.Component {
 
 
 
-const mapStateToProps = (state, props) => {  //props is needed to use right below
+const mapStateToProps = (state, props) => {  //props is needed to use right below (docs say ownProps)
     return {
         expense: state.expenses.find((expense) => expense.id === props.match.params.id)
     };

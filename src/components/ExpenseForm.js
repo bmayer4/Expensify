@@ -53,7 +53,7 @@ export default class ExpenseForm extends React.Component {
 
     onAmountChange = (e) => {
         const amount = e.target.value;
-        if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {  //we cam still set amount to nothing and set state, but submit wom't work. The or is why we need !amount
+        if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {  //we cam still set amount to nothing and set state, but submit won't work. The or is why we need !amount
             this.setState(() => ({
                 amount: amount
             }));
@@ -104,14 +104,14 @@ export default class ExpenseForm extends React.Component {
             <textarea  className="textarea" placeholder="Add a note for your expense (optional)" value={this.state.note} onChange={this.onNoteChange} >
             </textarea>
             <div>
-            <button className="button">Save Expense</button>
+            <button className="button">Save Expense</button>  
             </div>
             </form>
         );
     }
 };
 
-
+//**** 1/7/17 - I could make submit button disabled until (this.state.description || this.state.amount), make a function
 
 
 //moment ex:

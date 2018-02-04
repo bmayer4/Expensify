@@ -16,14 +16,14 @@
 
 .list-item {
     display: flex;
-    flex-direction: column;
+    flex-direction: column;  //default is row
     border: 1px solid darken($off-white, 7%);
     border-top: none;
     color: $dark-grey;
     padding: $s-size;
     text-decoration: none;
     transition: background .3s ease;
-    &:hover {             //shorthand for new css selected .list-item:hover {}
+    &:hover {             //shorthand for new css selector .list-item:hover {}
     background: $off-white;
     }
     @media (min-width: $desktop-breakpoint) {

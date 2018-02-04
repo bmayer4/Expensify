@@ -24,6 +24,7 @@ test('should handle startEditExpense', () => {
 
 test('should handle startRemoveExpense', () => {
     wrapper.find('button').simulate('click');
-    expect(history.push).toHaveBeenCalledWith('/');
-    expect(startRemoveExpense).toHaveBeenLastCalledWith({id: expenses[1].id});
+    //expect(history.push).toHaveBeenCalledWith('/');
+    //expect(startRemoveExpense).toHaveBeenLastCalledWith({id: expenses[1].id});
+    expect(wrapper.state('modalOpen')).toBe(true);
 });

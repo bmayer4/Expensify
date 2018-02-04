@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 
-Modal.setAppElement('#app'); 
+//Modal.setAppElement('#app'); 
 
 const RemoveExpenseModal = (props) => (  
     <Modal
@@ -10,6 +10,7 @@ const RemoveExpenseModal = (props) => (
     contentLabel="Remove"
     closeTimeoutMS={200}
     className="modal"
+    ariaHideApp={false}
     >
     <h3 className="modal__title">Remove Expense?</h3>
     <button className="button button--modal" onClick={props.onCancel}>Cancel</button>

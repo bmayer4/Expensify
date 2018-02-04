@@ -4,11 +4,11 @@ import { ExpensesSummary } from '../../components/ExpensesSummary';
 
 
 test('should correctly render ExpensesSummary with 1 expense', () => {
-    const wrapper = shallow(<ExpensesSummary expenseCount={1} expensesTotal={235} />);
+    const wrapper = shallow(<ExpensesSummary expenseCount={1} expensesTotal={235} expenses={{fake: 'fakeExpense'}}/>);
     expect(wrapper).toMatchSnapshot();     
 });
 
 test('should correctly render ExpensesSummary with multiple expenses', () => {
-    const wrapper = shallow(<ExpensesSummary expenseCount={23} expensesTotal={23543211} />);
+    const wrapper = shallow(<ExpensesSummary expenseCount={23} expensesTotal={23543211} expensesTotal={235} expenses={{fake: 'fakeExpense'}}/>);
     expect(wrapper).toMatchSnapshot();     
 });

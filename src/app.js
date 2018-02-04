@@ -5,7 +5,6 @@ import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';  //this can be named anything 
 import { startSetExpenses } from './actions/expenses';
 import { login, logout } from './actions/auth';
-import getVisibleExpenses from './selectors/expenses';
 import 'normalize.css/normalize.css';              
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';  //this was in ExpenseForm but we moved it
@@ -21,6 +20,7 @@ const jsx = (
     </Provider>
 );
 
+//if you're in the app and you log in and log out, we don't want to rerender everything
 let hasRendered = false;
 const renderApp = () => {
     if (!hasRendered) {
@@ -34,6 +34,7 @@ ReactDOM.render(<LoadingPage/>, document.getElementById('app'));
 
 //this helps us see if we triggered auth functionaility 
 //runs when we visit website
+//from firebase docs: For a web application, the default behavior is to persist a user's session even after the user closes the browser. 
 firebase.auth().onAuthStateChanged((user) => {  //runs the callback function when auth state is changed
     if (user) {
         console.log('log in');
@@ -51,6 +52,9 @@ firebase.auth().onAuthStateChanged((user) => {  //runs the callback function whe
         history.push('/');  
     }
 });
+
+
+
 
 
 

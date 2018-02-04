@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { startLogin } from '../actions/auth';
 
+console.log('login page called');
 export const LoginPage = ({ startLogin }) => (
     <div className="box-layout">
     <div className="box-layout__box">

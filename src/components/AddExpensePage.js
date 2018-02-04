@@ -5,10 +5,12 @@ import { startAddExpense } from './../actions/expenses';
 
 //named export (unconnected) for test
 export class AddExpensePage extends React.Component {
+    
     onSubmit = (expense) => {
         this.props.startAddExpense(expense);
         this.props.history.push('/');  //no page refresh, using browser routing
     };   //** history is passed into this component since it is registered with a route
+
     render () {
         return (
             <div>
@@ -44,7 +46,6 @@ export class AddExpensePage extends React.Component {
 //         />
 //     </div>
 //     );
-
 
 
     //connect takes two arguments, mapStateToProps and mapDispatchToProps

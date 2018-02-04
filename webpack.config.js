@@ -59,7 +59,7 @@ module.exports = (env) => {
         },
         plugins: [
             CSSExtract,   //after adding this, I had to add a link tag in head of index.html
-            new webpack.DefinePlugin ({  //node env variables arent passed to client side, so we hav to do this
+            new webpack.DefinePlugin ({  //node env variables arent passed to client side, so we have to do this
                 'process.env.FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY),
                 'process.env.FIREBASE_AUTH_DOMAIN': JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
                 'process.env.FIREBASE_DATABASE_URL': JSON.stringify(process.env.FIREBASE_DATABASE_URL),

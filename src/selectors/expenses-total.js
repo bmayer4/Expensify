@@ -11,15 +11,7 @@ const getExpensesTotal = (expenses) => {
 }
 
 export default getExpensesTotal;
-
-
-// export default (expenses) => {
-//     return expenses
-//         .map((expense) => expense.amount)
-//         .reduce((sum, value) => sum + value, 0);
-//   };
   
-
 
 
 //look above how I can chain
